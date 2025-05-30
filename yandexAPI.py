@@ -1,6 +1,5 @@
 import json
 import requests
-import json
 
 class YAAPI:
     def __init__(self):

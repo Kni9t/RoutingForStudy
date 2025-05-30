@@ -1,13 +1,9 @@
 # Нам необходимо построить оптимальные маршруты для заданного набора станций
-import sys
-
 from yandexAPI import YAAPI
 from map import MapController
 from routeController import RouteController
 from haversine import haversine
 from server import MapServer
-
-import json
 
 YAPI = YAAPI()
 Map = MapController()
