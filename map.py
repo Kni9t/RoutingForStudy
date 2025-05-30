@@ -2,14 +2,14 @@ import plotly.express as px
 import pandas as pd
 import json
 
+import jsonController
+
 class MapController:
     def __init__(self):
         pass
     
     def LoadDateForMap(self, fileName):
-        with open(fileName, 'r', encoding = 'utf-8') as file:
-            self.dataFrame = pd.DataFrame(json.load(file))
-            file.close()
+        self.dataFrame = pd.DataFrame(jsonController.Load(fileName))
             
     def Draw(self, mapHeight = 900, markerSize = 12, mapStyle = "open-street-map"):
         fig = px.scatter_mapbox(

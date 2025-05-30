@@ -7,5 +7,5 @@ class MapServer:
         self.app = FastAPI()
     
     def Start(self, ip = 'localhost', port = 7777):
-        self.app.mount("/", StaticFiles(directory="maps", html = True))
+        self.app.mount("/", StaticFiles(directory = "maps", html = True))
         uvicorn.run(self.app, host = ip, port = port)

@@ -1,5 +1,8 @@
 import numpy as np
 from haversine import haversine
+from sklearn.cluster import KMeans
+
+import jsonController
 
 class RouteController:
     def __init__(self):
@@ -9,7 +12,7 @@ class RouteController:
         stationPoints = []
         
         for station in stationList:
-            bufPoint = [station['latitude'], station['longitude']]
+            bufPoint = [station['longitude'], station['latitude']]
             stationPoints.append(bufPoint)
             
         self.points = np.array(stationPoints)
@@ -17,10 +20,3 @@ class RouteController:
     def Haversine(self, Point1, Point2):
         return haversine((Point1['latitude'], Point1['longitude']), (Point2['latitude'], Point2['longitude']))
     
-    def CreateDistMatrix(self, PointList):
-        bufMatrix = []
-        for i in range(len(PointList)):
-            if (i == 0):
-                continue
-            bufMatrix.append(self.Haversine(PointList[i-1], PointList[i]))
-        return bufMatrix

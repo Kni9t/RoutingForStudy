@@ -1,11 +1,11 @@
 import json
 import requests
 
+import jsonController
+
 class YAAPI:
     def __init__(self):
-        with open('params/key.json', 'r') as file:
-            self.key = dict(json.loads(file.read()))['key']
-            file.close()
+        self.key = dict(jsonController.Load('params/key.json'))['key']
         
     def saveAllStationList(self, fileName, state, reg, city):
         url = f'https://api.rasp.yandex.net/v3.0/stations_list/?apikey={self.key}&lang=ru_RU&format=json'
@@ -29,5 +29,4 @@ class YAAPI:
                                             }
                                         stationList.append(bufData)
         
-        with open(fileName, 'w', encoding = 'utf-8') as file:
-            json.dump(stationList, file, ensure_ascii=False)
+        jsonController.Save(fileName, stationList)
