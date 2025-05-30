@@ -4,6 +4,7 @@ from map import MapController
 from routeController import RouteController
 from haversine import haversine
 from server import MapServer
+import jsonController
 
 YAPI = YAAPI()
 Map = MapController()
