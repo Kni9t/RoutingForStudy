@@ -1,11 +1,11 @@
 import json
 
-def Save(self, fileName, data):
+def Save(fileName, data):
     with open(fileName, 'w', encoding = 'utf-8') as file:
         json.dump(data, file, ensure_ascii=False)
         file.close()
             
-def Load(self, fileName):
+def Load(fileName):
     output = None
     
     with open(fileName, 'r', encoding = 'utf-8') as file:

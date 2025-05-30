@@ -5,7 +5,7 @@ import jsonController
 
 class YAAPI:
     def __init__(self):
-        self.key = dict(jsonController.Load('params/key.json'))['key']
+        self.key = jsonController.Load('params/key.json')['key']
         
     def saveAllStationList(self, fileName, state, reg, city):
         url = f'https://api.rasp.yandex.net/v3.0/stations_list/?apikey={self.key}&lang=ru_RU&format=json'
