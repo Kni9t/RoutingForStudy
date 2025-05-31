@@ -18,6 +18,10 @@ YAPI.saveAllStationList(fileName, 'Россия', 'Москва и Москов�
 
 clusters = routeController.Clustering(7, jsonController.Load(fileName))
 
+print (routeController.CreateRoute(clusters))
+
+sys.exit(0)
+
 map.SetData(clusters)
 
 map.Draw()

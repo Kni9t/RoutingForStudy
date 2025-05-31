@@ -11,7 +11,12 @@ class MapController:
         self.dataFrame = pd.DataFrame(jsonController.Load(fileName))
         
     def SetData(self, Data):
-        self.dataFrame = pd.DataFrame(Data)
+        bufDF = []
+        for cluster in Data:
+            for station in cluster:
+                bufDF.append(station)
+                
+        self.dataFrame = pd.DataFrame(bufDF)
             
     def Draw(self, mapHeight = 900, markerSize = 12, mapStyle = "open-street-map"):
         fig = px.scatter_mapbox(
