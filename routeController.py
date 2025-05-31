@@ -75,7 +75,7 @@ class RouteController:
             path.append(next_city)
             visited[next_city] = True
 
-        path.append(0)  # Вернуться в начало
+        # path.append(0)  # Вернуться в начало
         return path
             
 
@@ -87,10 +87,12 @@ class RouteController:
             
             bufRoute = []
             for i in range(len(routeIDList)):
-                if (i == len(cluster)):
-                    bufRoute.append(cluster[0])
-                else:
-                    bufRoute.append(cluster[i])
+                # Вернуться в начало
+                # if (i == len(cluster)):
+                #     bufRoute.append(cluster[routeIDList[0]])
+                # else:
+                #     bufRoute.append(cluster[routeIDList[i]])
+                bufRoute.append(cluster[routeIDList[i]])
             
             routeList.append(bufRoute)
         

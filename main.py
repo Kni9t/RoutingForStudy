@@ -5,8 +5,6 @@ from routeController import RouteController
 from server import MapServer
 import jsonController
 
-import sys
-
 YAPI = YAAPI()
 map = MapController()
 routeController = RouteController()
@@ -14,16 +12,14 @@ server = MapServer()
 
 fileName = 'params/MoscowStationList.json'
 
-YAPI.saveAllStationList(fileName, 'Россия', 'Москва и Московская область', 'Люберцы')
+YAPI.saveAllStationList(fileName, 'Россия', 'Москва и Московская область', 'Видное')
 
-clusters = routeController.Clustering(7, jsonController.Load(fileName))
+clusters = routeController.Clustering(10, jsonController.Load(fileName))
 
 print (routeController.CreateRoute(clusters))
 
-sys.exit(0)
-
 map.SetData(clusters)
 
-map.Draw()
+map.DrawNew(routeController.CreateRoute(clusters))
 
 server.Start()
