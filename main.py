@@ -10,13 +10,14 @@ map = MapController()
 routeController = RouteController()
 server = MapServer()
 
-fileName = 'params/MoscowStationList.json'
+fileName = 'params/StationList.json'
 
-YAPI.saveAllStationList(fileName, 'Россия', 'Москва и Московская область', 'Видное')
+YAPI.saveAllStationList(fileName, 'Россия', 'Москва и Московская область', 'Люберцы')
 
-clusters = routeController.Clustering(10, jsonController.Load(fileName))
+clusters = routeController.Clustering(12, jsonController.Load(fileName))
 
 map.SetData(clusters)
-map.DrawNew(routeController.CreateRoute(clusters))
+map.SetRouts(routeController.CreateRoute(clusters))
+map.Draw()
 
 server.Start()

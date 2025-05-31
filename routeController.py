@@ -2,10 +2,6 @@ import numpy as np
 from haversine import haversine
 from sklearn.cluster import KMeans
 
-from geopy.distance import geodesic
-
-import jsonController
-
 class RouteController:
     def __init__(self):
         self.points = None
