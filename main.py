@@ -2,12 +2,13 @@
 from yandexAPI import YAAPI
 from map import MapController
 from routeController import RouteController
-from haversine import haversine
 from server import MapServer
 import jsonController
 
+import sys
+
 YAPI = YAAPI()
-Map = MapController()
+map = MapController()
 routeController = RouteController()
 server = MapServer()
 
@@ -15,7 +16,10 @@ fileName = 'params/MoscowStationList.json'
 
 YAPI.saveAllStationList(fileName, 'Россия', 'Москва и Московская область', 'Люберцы')
 
-Map.LoadDateForMap(fileName)
-Map.Draw()
+clusters = routeController.Clustering(7, jsonController.Load(fileName))
+
+map.SetData(clusters)
+
+map.Draw()
 
 server.Start()

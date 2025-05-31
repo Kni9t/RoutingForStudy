@@ -7,8 +7,11 @@ class MapController:
     def __init__(self):
         pass
     
-    def LoadDateForMap(self, fileName):
+    def SetDataFromFile(self, fileName):
         self.dataFrame = pd.DataFrame(jsonController.Load(fileName))
+        
+    def SetData(self, Data):
+        self.dataFrame = pd.DataFrame(Data)
             
     def Draw(self, mapHeight = 900, markerSize = 12, mapStyle = "open-street-map"):
         fig = px.scatter_mapbox(
@@ -17,8 +20,8 @@ class MapController:
             lon = "longitude",
             hover_name = "title",
             hover_data = ["yandex_code"],
-            color = "transport_type", 
-            zoom = 10,
+            color = "clusterID", 
+            zoom = 11,
             height = mapHeight
             )
         fig.update_traces(marker = dict(size = markerSize))

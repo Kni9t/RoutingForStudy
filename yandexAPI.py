@@ -24,7 +24,8 @@ class YAAPI:
                                             'longitude': float(station['longitude']),
                                             'latitude': float(station['latitude']),
                                             'transport_type': station['transport_type'],
-                                            'yandex_code': station['codes']['yandex_code']
+                                            'yandex_code': station['codes']['yandex_code'],
+                                            'clusterID': -1
                                             }
                                         stationList.append(bufData)
         
